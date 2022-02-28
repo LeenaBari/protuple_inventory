@@ -30,10 +30,7 @@ class employeeClass:
         self.var_utype=StringVar()
         self.var_salary=StringVar()
        
-        
-
-
-
+    
 
         #======SearchFrame=====
         SearchFrame=LabelFrame(self.root,text="Search Employee",font=("goudy old style",12,"bold"),bd=2,relief=RIDGE,bg="white")
@@ -293,13 +290,6 @@ class employeeClass:
                     messagebox.showerror("Error","No record found",parent=self.root)
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to :{str(ex)}",parent=self.root)
-
-
-
-
-
-
-
 
 
 
