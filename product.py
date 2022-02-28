@@ -193,8 +193,8 @@ class productClass:
         content=(self.product_table.item(f))
         row=content['values']
         self.var_pid.set(row[0])
-        self.var_cat.set(row[1])
-        self.var_sup.set(row[2])
+        self.var_sup.set(row[1])
+        self.var_cat.set(row[2])
         self.var_name.set(row[3])
         self.var_price.set(row[4])
         self.var_quantity.set(row[5])
@@ -285,6 +285,9 @@ class productClass:
                     messagebox.showerror("Error","No record found",parent=self.root)
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to :{str(ex)}",parent=self.root)
+
+    
+     
 
 
 
