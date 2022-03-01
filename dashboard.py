@@ -26,6 +26,8 @@ class IMS:
         title=Label(self.root,text="Inventory Management System",image=self.icon_title,compound=LEFT,font=("times new roman",40,"bold"),bg="dark blue",fg="white",anchor="w",padx=20).place(x=0,y=0,relwidth=1,height=70)
 
 
+
+
         #==========buttuon logout===============
 
         btn_logout=Button(self.root,text="Logout",command=self.logout,font=("times new roman",15,"bold"),bg="yellow",cursor="hand2").place(x=1100,y=10,height=50,width=150)
