@@ -100,8 +100,8 @@ class supplierClass:
         con=sqlite3.connect(database=r'protuple_inventory.db')
         cur=con.cursor()
         try:
-            if self.var_sup_invoice.get()=="":
-                messagebox.showerror("Error","Invoice must be required",parent=self.root)
+            if self.var_sup_invoice.get()=="" or self.var_name.get()=="" or len(self.var_contact.get())!=10 or self.txt_desc.get('1.0',END)=="":
+                messagebox.showerror("Error","All fields are required",parent=self.root)
             else:
                 cur.execute("Select * from supplier where invoice=?",(self.var_sup_invoice.get(),))
                 row=cur.fetchone()
