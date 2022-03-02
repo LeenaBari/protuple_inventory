@@ -1,3 +1,4 @@
+import re
 from cgitb import text
 from textwrap import fill
 from tkinter import*
@@ -29,6 +30,7 @@ class employeeClass:
         self.var_pass=StringVar()
         self.var_utype=StringVar()
         self.var_salary=StringVar()
+
        
     
 
@@ -79,7 +81,7 @@ class employeeClass:
 
         txt_email=Entry(self.root,textvariable=self.var_email,font=("goudy old style",15),bg="lightyellow").place(x=150,y=230,width=180)
         txt_pass=Entry(self.root,textvariable=self.var_pass,font=("goudy old style",15),bg="lightyellow").place(x=500,y=230,width=180)
-        cmb_utype=ttk.Combobox(self.root,textvariable=self.var_utype,values=("Admin","Employee"),state='readonly',justify=CENTER,font=("goudy old style",15))
+        cmb_utype=ttk.Combobox(self.root,textvariable=self.var_utype,values=("Select","Admin","Employee"),state='readonly',justify=CENTER,font=("goudy old style",15))
         cmb_utype.place(x=850,y=230,width=180)
         cmb_utype.current(0)
 
@@ -145,6 +147,26 @@ class employeeClass:
         try:
             if self.var_emp_id.get()=="":
                 messagebox.showerror("Error","Employee ID must be required",parent=self.root)
+            elif self.var_name.get()=="":
+                messagebox.showerror("Error","Employee Name must be required",parent=self.root)
+            elif self.var_email.get()=="":
+                messagebox.showerror("Error","Invalid Email",parent=self.root)
+            elif self.var_gender.get() == "":
+                messagebox.showerror("Error", "Employee Gender must be required", parent=self.root)
+            elif self.var_contact.get() == "" or len(self.var_contact.get())!=10:
+                messagebox.showerror("Error", "Invalid Contact", parent=self.root)
+            elif self.var_dob.get()=="":
+                messagebox.showerror("Error","Birth Date must be required",parent=self.root)
+            elif self.var_doj.get()=="":
+                messagebox.showerror("Error","Joining Date must be required",parent=self.root)
+            elif self.var_pass.get()=="":
+                messagebox.showerror("Error","Password must be required",parent=self.root)
+            elif self.var_utype.get() =="":
+                messagebox.showerror("Error", "User Type must be required", parent=self.root)
+            elif self.txt_address.get('1.0',END)=="":
+                messagebox.showerror("Error","address  must be required",parent=self.root)
+            elif self.var_salary.get()=="":
+                messagebox.showerror("Error","Salary must be required",parent=self.root)
             else:
                 cur.execute("Select * from employee where eid=?",(self.var_emp_id.get(),))
                 row=cur.fetchone()
@@ -263,7 +285,7 @@ class employeeClass:
         self.var_dob.set("")
         self.var_doj.set("")
         self.var_pass.set("")
-        self.var_utype.set("Admin")
+        self.var_utype.set("Select")
         self.txt_address.delete('1.0',END)
         self.var_salary.set("")
         self.var_searchtxt.set("")
