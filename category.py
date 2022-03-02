@@ -76,9 +76,12 @@ class categoryClass:
                 if row!=None:
                    messagebox.showerror("Error","Category already present try different",parent=self.root)
                 else:
-                    cur.execute("Insert into category (name) values(?)",( self.var_name.get(),))
+                    cur.execute("Insert into category (name) values(?)",(
+                        self.var_name.get(),
+                    ))
                     con.commit()
                     messagebox.showinfo("Success","Category Added Successfully",parent=self.root)
+                    self.show()
                     
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to :{str(ex)}",parent=self.root)
