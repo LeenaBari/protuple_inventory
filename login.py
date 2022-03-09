@@ -10,6 +10,9 @@ import os
 import email_pass
 import smtplib
 import time
+root_dir=os.path.dirname(__file__)
+
+
 class Login:
     def __init__(self,root):
         self.root=root
@@ -20,7 +23,7 @@ class Login:
         self.otp=''
 
         #==========Images====================
-        self.log_img=Image.open("C:\\Users\\leena\\Downloads\\Project Pic\\log1.jpg")
+        self.log_img=Image.open(os.path.join(root_dir,"F:\\Project Pic\\log1.jpg"))
         self.log_img=self.log_img.resize((390,380),Image.ANTIALIAS)
         self.log_img=ImageTk.PhotoImage(self.log_img)
         lbl_img=Label(self.root,image=self.log_img,bd=2)
