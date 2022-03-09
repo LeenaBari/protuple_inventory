@@ -1,3 +1,4 @@
+import os.path
 import re
 from cgitb import text
 from textwrap import fill
@@ -6,11 +7,21 @@ from turtle import title
 from PIL import Image,ImageTk
 from tkinter import ttk,messagebox
 import sqlite3
-import re
+from tkcalendar import Calendar,DateEntry
 
 
-from pkg_resources import EntryPoint
+
+
 class employeeClass:
+    def checkEmail(self,val):
+        regex='^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+        if re.search(regex,val):
+            # self.wdgLst.cconfigure(text='Email is valid')
+            return True
+        else:
+            # self.wdgLst.cconfigure(text='Email is Invalid')
+            return False
+
     def __init__(self,root):
         self.root=root
         self.root.geometry("1100x500+220+130")
@@ -72,15 +83,15 @@ class employeeClass:
 
 
         txt_name=Entry(self.root,textvariable=self.var_name,font=("goudy old style",15),bg="lightyellow").place(x=150,y=190,width=180)
-        txt_dob=Entry(self.root,textvariable=self.var_dob,font=("goudy old style",15),bg="lightyellow").place(x=500,y=190,width=180)
-        txt_doj=Entry(self.root,textvariable=self.var_doj,font=("goudy old style",15),bg="lightyellow").place(x=850,y=190,width=180)
+        txt_dob=DateEntry(self.root,textvariable=self.var_dob,font=("goudy old style",15),bg="lightyellow").place(x=500,y=190,width=180)
+        txt_doj=DateEntry(self.root,textvariable=self.var_doj,font=("goudy old style",15),bg="lightyellow").place(x=850,y=190,width=180)
 
          #===row3===============
         lbl_email=Label(self.root,text="Email",font=("goudy old style",15),bg="white").place(x=50,y=230)
         lbl_pass=Label(self.root,text="Password",font=("goudy old style",15),bg="white").place(x=350,y=230)
         lbl_utype=Label(self.root,text="User Type",font=("goudy old style",15),bg="white").place(x=750,y=230)
 
-
+        regEmail=self.root.register(self.checkEmail)
         txt_email=Entry(self.root,textvariable=self.var_email,font=("goudy old style",15),bg="lightyellow").place(x=150,y=230,width=180)
         txt_pass=Entry(self.root,textvariable=self.var_pass,font=("goudy old style",15),bg="lightyellow").place(x=500,y=230,width=180)
         cmb_utype=ttk.Combobox(self.root,textvariable=self.var_utype,values=("Select","Admin","Employee"),state='readonly',justify=CENTER,font=("goudy old style",15))
@@ -151,10 +162,10 @@ class employeeClass:
                 messagebox.showerror("Error","Employee ID must be required",parent=self.root)
             elif self.var_name.get()=="":
                 messagebox.showerror("Error","Employee Name must be required",parent=self.root)
-            elif self.var_email.get()=="" or re.match(self.var_email.get())!=(r"^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$"):
-                messagebox.showerror("Error","Invalid Email",parent=self.root)
-            elif self.var_gender.get() =="":
-                messagebox.showerror("Error", "Employee Gender must be required", parent=self.root)
+            elif not self.checkEmail(self.var_email.get()) :
+                messagebox.showerror("Error","Please enter valid Email",parent=self.root)
+            elif self.var_gender.get() =="Select" or self.var_gender.get()=="Empty":
+                messagebox.showerror("Error", "Select the Gender", parent=self.root)
             elif self.var_contact.get() == "" or len(self.var_contact.get())!=10:
                 messagebox.showerror("Error", "Invalid Contact", parent=self.root)
             elif self.var_dob.get()==""  :
@@ -163,7 +174,7 @@ class employeeClass:
                 messagebox.showerror("Error","Joining Date must be required",parent=self.root)
             elif self.var_pass.get()=="":
                 messagebox.showerror("Error","Password must be required",parent=self.root)
-            elif self.var_utype.get() =="":
+            elif self.var_utype.get() =="Select" or self.var_utype.get()=="Empty":
                 messagebox.showerror("Error", "User Type must be required", parent=self.root)
             elif self.txt_address.get('1.0',END)=="":
                 messagebox.showerror("Error","address  must be required",parent=self.root)
@@ -314,10 +325,6 @@ class employeeClass:
                     messagebox.showerror("Error","No record found",parent=self.root)
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to :{str(ex)}",parent=self.root)
-
-
-
-
 
 
 
