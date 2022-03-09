@@ -68,7 +68,7 @@ class salesClass:
     def show(self):
         del self.bill_list[:]
         self.Sales_List.delete(0,END)
-        print(os.listdir('bill'))
+        # print(os.listdir('bill'))
         for i in os.listdir('bill'):
             if i.split('.')[-1]=='txt':
                 self.Sales_List.insert(END,i)
@@ -77,7 +77,7 @@ class salesClass:
     def get_data(self,ev):
         index_=self.Sales_List.curselection()
         file_name=self.Sales_List.get(index_)
-        print(file_name)
+        # print(file_name)
         self.bill_area.delete('1.0',END)
         fp=open(f'bill/{file_name}','r')
         for i in fp:

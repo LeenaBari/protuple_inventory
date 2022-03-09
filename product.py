@@ -152,7 +152,7 @@ class productClass:
         con=sqlite3.connect(database=r'protuple_inventory.db')
         cur=con.cursor()
         try:
-            if self.var_cat.get()=="Select" or self.var_cat.get()=="Empty" or self.var_sup.get()=="Select" or self.var_name.get()=="":
+            if self.var_cat.get()=="Select" or self.var_cat.get()=="Empty" or self.var_sup.get()=="Select" or  self.var_sup.get()=="Empty"  or self.var_name.get()=="":
                 messagebox.showerror("Error","All fields are required",parent=self.root)
             else:
                 cur.execute("Select * from product where name=?",(self.var_name.get(),))
