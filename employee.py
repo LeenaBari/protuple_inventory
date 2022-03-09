@@ -6,6 +6,8 @@ from turtle import title
 from PIL import Image,ImageTk
 from tkinter import ttk,messagebox
 import sqlite3
+import re
+
 
 from pkg_resources import EntryPoint
 class employeeClass:
@@ -149,14 +151,14 @@ class employeeClass:
                 messagebox.showerror("Error","Employee ID must be required",parent=self.root)
             elif self.var_name.get()=="":
                 messagebox.showerror("Error","Employee Name must be required",parent=self.root)
-            elif self.var_email.get()=="":
+            elif self.var_email.get()=="" or re.match(self.var_email.get())!=(r"^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$"):
                 messagebox.showerror("Error","Invalid Email",parent=self.root)
-            elif self.var_gender.get() == "":
+            elif self.var_gender.get() =="":
                 messagebox.showerror("Error", "Employee Gender must be required", parent=self.root)
             elif self.var_contact.get() == "" or len(self.var_contact.get())!=10:
                 messagebox.showerror("Error", "Invalid Contact", parent=self.root)
-            elif self.var_dob.get()=="":
-                messagebox.showerror("Error","Birth Date must be required",parent=self.root)
+            elif self.var_dob.get()==""  :
+                messagebox.showerror("Error", "Invalid Birth Date", parent=self.root)
             elif self.var_doj.get()=="":
                 messagebox.showerror("Error","Joining Date must be required",parent=self.root)
             elif self.var_pass.get()=="":
@@ -312,6 +314,10 @@ class employeeClass:
                     messagebox.showerror("Error","No record found",parent=self.root)
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to :{str(ex)}",parent=self.root)
+
+
+
+
 
 
 
