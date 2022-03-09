@@ -50,13 +50,13 @@ class categoryClass:
         self.cateory_table.bind("<ButtonRelease-1>",self.get_data)
 
         #=======================Images=====================
-        self.im1=Image.open(os.path.join(root_dir,"F:\\Project Pic\\cat2.jpg"))
+        self.im1=Image.open(os.path.join(root_dir,"Project Pic/cat2.jpg"))
         self.im1=self.im1.resize((500,250),Image.ANTIALIAS)
         self.im1=ImageTk.PhotoImage(self.im1)
         self.lbl_im1=Label(self.root,image=self.im1,bd=2,relief=RAISED)
         self.lbl_im1.place(x=50,y=220)
 
-        self.im2=Image.open(os.path.join(root_dir,"F:\\Project Pic\\cat3.jpg"))
+        self.im2=Image.open(os.path.join(root_dir,"Project Pic/cat3.jpg"))
         self.im2=self.im2.resize((500,250),Image.ANTIALIAS)
         self.im2=ImageTk.PhotoImage(self.im2)
         self.lbl_im2=Label(self.root,image=self.im2,bd=2,relief=RAISED)
