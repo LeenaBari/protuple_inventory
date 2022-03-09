@@ -14,6 +14,7 @@ from sales import salesClass
 from tkinter import messagebox
 import os
 import time
+root_dir=os.path.dirname(__file__)
 class IMS:
     def __init__(self,root):
         self.root=root
@@ -22,7 +23,7 @@ class IMS:
         self.root.config(bg="white")
 
         #====title====
-        self.icon_title=PhotoImage(file="C:\\Users\\leena\\Downloads\\Project Pic\\logo1.png")
+        self.icon_title=PhotoImage(file=os.path.join(root_dir,"F:\\Project Pic\\logo1.png"))
         title=Label(self.root,text="Inventory Management System",image=self.icon_title,compound=LEFT,font=("times new roman",40,"bold"),bg="dark blue",fg="white",anchor="w",padx=20).place(x=0,y=0,relwidth=1,height=70)
 
 
