@@ -8,6 +8,7 @@ from PIL import Image,ImageTk
 from tkinter import ttk,messagebox
 import sqlite3
 import os
+root_dir=os.path.dirname(__file__)
 
 from pkg_resources import EntryPoint
 class salesClass:
@@ -56,7 +57,7 @@ class salesClass:
         self.bill_area.pack(fill=BOTH,expand=1)
 
         #======================Image=================================
-        self.bill_photo=Image.open("C:\\Users\\leena\\Downloads\\Project Pic\\bill1.png")
+        self.bill_photo=Image.open(os.path.join(root_dir,"F:\\Project Pic\\bill1.png"))
         self.bill_photo=self.bill_photo.resize((390,380),Image.ANTIALIAS)
         self.bill_photo=ImageTk.PhotoImage(self.bill_photo)
 
