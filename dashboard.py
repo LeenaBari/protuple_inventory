@@ -23,7 +23,7 @@ class IMS:
         self.root.config(bg="white")
 
         #====title====
-        self.icon_title=PhotoImage(file=os.path.join(root_dir,"F:\\Project Pic\\logo1.png"))
+        self.icon_title=PhotoImage(file=os.path.join(root_dir,"Project Pic/logo1.png"))
         title=Label(self.root,text="Inventory Management System",image=self.icon_title,compound=LEFT,font=("times new roman",40,"bold"),bg="dark blue",fg="white",anchor="w",padx=20).place(x=0,y=0,relwidth=1,height=70)
 
 
@@ -39,13 +39,13 @@ class IMS:
         self.lbl_clock.place(x=0,y=70,relwidth=1,height=30)
 
         #===========LeftMenu=========================
-        self.MenuLogo=PhotoImage(file="C:\\Users\\leena\\Downloads\\Project Pic\\menu2.png")     
+        self.MenuLogo=PhotoImage(file=os.path.join(root_dir,"Project Pic/menu2.png"))
        
         LeftMenu=Frame(self.root,bd=2,relief=RIDGE,bg="white")
         LeftMenu.place(x=0,y=102,width=200,height=469)
         lbl_menuLogo=Label(LeftMenu,image=self.MenuLogo)
         lbl_menuLogo.pack(side=TOP,fill=X)
-        self.icon_side=PhotoImage(file="C:\\Users\\leena\\Downloads\\Project Pic\\side.png")
+        self.icon_side=PhotoImage(file=os.path.join(root_dir,"Project Pic/side.png"))
         lbl_menu=Label(LeftMenu,text="Menu",font=("times new roman",20),bg="#009688").pack(side=TOP,fill=X)
         btn_employee=Button(LeftMenu,text="Employee",command=self.employee,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_supplier=Button(LeftMenu,text="Supplier",command=self.supplier,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
