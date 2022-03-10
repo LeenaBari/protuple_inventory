@@ -268,7 +268,7 @@ class BillingClass:
             if self.var_search.get()=="":
                 messagebox.showerror("Error","Search input should be required",parent=self.root)
             else:
-                cur.execute("Select pid,name,price,qty,status from product where name LIKE '%"+self.var_search.get()+"%'")
+                cur.execute("Select pid,name,price,qty,status from product where name LIKE '%" +self.var_search.get() + "%' and status='Active'")
                 rows=cur.fetchall()
                 if len(rows)!=0:
                     self.product_Table.delete(*self.product_Table.get_children())
@@ -309,7 +309,7 @@ class BillingClass:
             messagebox.showerror('Error',"Please select product from list",parent=self.root) 
         elif self.var_qty.get()=='':
             messagebox.showerror('Error',"Quantity is required",parent=self.root)
-        elif int(self.var_qty.get())>int(self.var_stock.get()):
+        elif int(self.var_qty.get()) > int(self.var_stock.get()):
             messagebox.showerror('Error',"Invalid Quantity",parent=self.root)
         else:
             # price_cal=float(int(self.var_qty.get())*float(self.var_price.get()))
@@ -325,7 +325,7 @@ class BillingClass:
                 if self.var_pid.get()==row[0]:
                     present='yes'
                     break
-                index_+=1
+                index_ += 1
             if present=='yes':
                 op=messagebox.askyesno('Confirm',"Product already present\nDo you wat to Update| Remove from the cart list",parent=self.root)
                 if op==True:
@@ -344,7 +344,7 @@ class BillingClass:
         self.net_pay=0
         self.discount=0
         for row in self.cart_list:
-            self.bill_amt=self.bill_amt+(float(row[2]*int(row[3])))
+            self.bill_amt=self.bill_amt+(float(row[2]) * int(row[3]))
             
         self.discount=(self.bill_amt*5)/100
         self.net_pay=self.bill_amt-self.discount
@@ -479,8 +479,6 @@ Net Pay\t\t\t\tRs.{self.net_pay}
         self.root.destroy()
         os.system("python login.py")
             
-
-
 
 
 if __name__=="__main__":
