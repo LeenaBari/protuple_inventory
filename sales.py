@@ -30,8 +30,9 @@ class salesClass:
         lbl_invoice=Label(self.root,text="Invoice No",font=("times new roman",15),bg="white").place(x=50,y=100)
         txt_invoice=Entry(self.root,textvariable=self.var_invoice,font=("times new roman",15),bg="lightyellow").place(x=160,y=100,width=180,height=28)
 
-        btn_search=Button(self.root,text="Search",command=self.search,font=("times new roman",15,"bold"),bg="#2196f3",fg="white",cursor="hand2").place(x=360,y=100,width=120,height=28)
-        btn_clear=Button(self.root,text="Clear",command=self.clear,font=("times new roman",15,"bold"),bg="grey",cursor="hand2").place(x=490,y=100,width=120,height=28)
+        btn_search=Button(self.root,text="Search",command=self.search,font=("times new roman",15,"bold"),bg="#2196f3",fg="white",cursor="hand2").place(x=360,y=100,width=100,height=28)
+        btn_clear=Button(self.root,text="Clear",command=self.clear,font=("times new roman",15,"bold"),bg="grey",cursor="hand2").place(x=470,y=100,width=100,height=28)
+        btn_back=Button(self.root, text="Back",command=self.back, font=("times new roman", 15, "bold"), bg="black",fg="white",cursor="hand2").place(x=580, y=100, width=100, height=28)
 
         #==================Bill list====================================
         sales_Frame=Frame(self.root,bd=3,relief=RIDGE)
@@ -104,6 +105,9 @@ class salesClass:
         self.bill_area.delete('1.0',END)
 
 
+    def back(self):
+        self.root.destroy()
+        os.system("python dashboard.py")
 
 
 if __name__=="__main__":

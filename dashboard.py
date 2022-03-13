@@ -40,11 +40,13 @@ class IMS:
 
         #===========LeftMenu=========================
         self.MenuLogo=PhotoImage(file=os.path.join(root_dir,"Project Pic/menu2.png"))
-       
+
         LeftMenu=Frame(self.root,bd=2,relief=RIDGE,bg="white")
         LeftMenu.place(x=0,y=102,width=200,height=469)
+
         lbl_menuLogo=Label(LeftMenu,image=self.MenuLogo)
         lbl_menuLogo.pack(side=TOP,fill=X)
+
         self.icon_side=PhotoImage(file=os.path.join(root_dir,"Project Pic/side.png"))
         lbl_menu=Label(LeftMenu,text="Menu",font=("times new roman",20),bg="#009688").pack(side=TOP,fill=X)
         btn_employee=Button(LeftMenu,text="Employee",command=self.employee,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
@@ -54,7 +56,7 @@ class IMS:
         btn_sales=Button(LeftMenu,text="Sales",command=self.sales,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_exit=Button(LeftMenu,text="Exit",image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
 
-        #==================Content=============================
+        #=======================Content==================================
         self.lbl_employee=Label(self.root,text="Total Employee\n[0]",bd=5,relief=RIDGE,bg="#33bbf9",fg="white",font=("goudy old style",20,"bold"))
         self.lbl_employee.place(x=300,y=120,height=150,width=300)
 
@@ -80,6 +82,7 @@ class IMS:
     def employee(self):
         self.new_win=Toplevel(self.root)
         self.new_obj=employeeClass(self.new_win)
+
 
     def supplier(self):
         self.new_win=Toplevel(self.root)

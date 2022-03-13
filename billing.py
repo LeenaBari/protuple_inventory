@@ -365,8 +365,10 @@ class BillingClass:
 
 
     def generate_bill(self):
-        if self.var_cname.get()=='' or self.var_contact.get()=='':
+        if self.var_cname.get()=='' :
             messagebox.showerror("Error",f"Customer Details are required",parent=self.root)
+        elif self.var_contact.get()=="" or len(self.var_contact.get())!=10:
+            messagebox.showerror("Error",f"Invalid Contact",parent=self.root)
         elif len(self.cart_list)==0:
             messagebox.showerror("Error",f"Please add product to cart!!",parent=self.root)
         else:

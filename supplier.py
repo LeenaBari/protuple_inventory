@@ -5,6 +5,7 @@ from turtle import title
 from PIL import Image,ImageTk
 from tkinter import ttk,messagebox
 import sqlite3
+import os
 
 from pkg_resources import EntryPoint
 class supplierClass:
@@ -64,11 +65,11 @@ class supplierClass:
        
 
         #=====button====
-        btn_add=Button(self.root,text="Save",command=self.add,font=("goudy old style",15),bg="blue",fg="white",cursor="hand2").place(x=180,y=370,width=110,height=35)
-        btn_update=Button(self.root,text="Update",command=self.update,font=("goudy old style",15),bg="#4caf50",fg="white",cursor="hand2").place(x=300,y=370,width=110,height=35)
-        btn_delete=Button(self.root,text="Delete",command=self.delete,font=("goudy old style",15),bg="#f44336",fg="white",cursor="hand2").place(x=420,y=370,width=110,height=35)
-        btn_clear=Button(self.root,text="Clear",command=self.clear,font=("goudy old style",15),bg="#607d8b",fg="white",cursor="hand2").place(x=540,y=370,width=110,height=35)
-
+        btn_add=Button(self.root,text="Save",command=self.add,font=("goudy old style",15),bg="blue",fg="white",cursor="hand2").place(x=50,y=370,width=110,height=35)
+        btn_update=Button(self.root,text="Update",command=self.update,font=("goudy old style",15),bg="#4caf50",fg="white",cursor="hand2").place(x=170,y=370,width=110,height=35)
+        btn_delete=Button(self.root,text="Delete",command=self.delete,font=("goudy old style",15),bg="#f44336",fg="white",cursor="hand2").place(x=290,y=370,width=110,height=35)
+        btn_clear=Button(self.root,text="Clear",command=self.clear,font=("goudy old style",15),bg="#607d8b",fg="white",cursor="hand2").place(x=410,y=370,width=110,height=35)
+        btn_back= Button(self.root, text="Back", command=self.back, font=("goudy old style", 15), bg="black",fg="white", cursor="hand2").place(x=530, y=370, width=110, height=35)
 
         #=====employee details======
         emp_frame=Frame(self.root,bd=3,relief=RIDGE)
@@ -221,6 +222,9 @@ class supplierClass:
             messagebox.showerror("Error",f"Error due to :{str(ex)}",parent=self.root)
 
 
+    def back(self):
+        self.root.destroy()
+        os.system("python dashboard.py")
 
 
 if __name__=="__main__":
